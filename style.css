@@ -1,0 +1,30 @@
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+th {
+  width: 300px;
+}
+
+table,
+th {
+  border-collapse: collapse;
+  border: 2px solid #c0c0c0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+bottompage {
+  position: absolute;
+  bottom: 5px;
+  right: 30%;
+  left: 30%;
+  width: 40%;
+}
