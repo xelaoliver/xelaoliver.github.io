@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>xela | controlling lego motors</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+</head>
+
+<body>
+  <center>
+    <h1><i>hacking</i> lego motors with arduino</h1><p>See how you can hack your lego motors and control them via Arduino.</p>
+    <br></br>
+    <p></p>
+  </center>
+</body>
+
+</html>
