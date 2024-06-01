@@ -10,10 +10,23 @@
 
 <body>
   <center>
-    <h1><i>hacking</i> lego motors with arduino</h1><p>See how you can hack your lego motors and control them via Arduino.</p>
+    <h1>hacking lego motors with arduino</h1><p>See how you can hack your lego motors and control them via the Arduino IDE program.</p>
     <br></br>
     <p></p>
-  </center>
+    </center>
+    I had the need to create a reliable and easy way to connect Lego Motors to Arduino. This project used:
+    <ul>
+      <li>Arduino UNO R3</li>
+      <li>NPN (BJT) Transistor</li>
+      <li>Connector Pins</li>
+      <li>Breadboard Wires</li>
+      <li>LEGO Motor</li>
+    </ul>
+    I knew that the 5V that the Arduino outputed wasn't resonable for the motors, so I designed a circuit utilising the Transistor to output 9V when voltage is being passed through the Base.
+  <p></p>
+  <img src="../images/lego-arduino diagram.png" alt="Circuit Diagram" style="width:50%;">
+  <p></p>
+  The ouput is connected to the C1 pin of the LEGO motor and the negative connects to the GND of the 9V battery (see circuit diagram above). 
 </body>
 
 </html>
