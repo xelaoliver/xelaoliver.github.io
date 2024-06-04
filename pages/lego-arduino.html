@@ -22,11 +22,30 @@
       <li>Breadboard Wires</li>
       <li>LEGO Motor</li>
     </ul>
-    I knew that the 5V that the Arduino outputed wasn't resonable for the motors, so I designed a circuit utilising the Transistor to output 9V when voltage is being passed through the Base.
+    I knew that the 5V that the Arduino outputed wasn't resonable for the motors, so I designed a circuit utilising the Transistor to output 9V when voltage is being passed through the Base. A transistor is like an electronic switch that allows electricity to pass through when a small amount of voltage is passed through the base.
   <p></p>
-  <img src="../images/lego-arduino diagram.png" alt="Circuit Diagram" style="width:50%;">
+  <center><img src="../images/lego-arduino diagram.png" alt="Circuit Diagram" style="width:80%;"></center>
   <p></p>
   The ouput is connected to the C1 pin of the LEGO motor and the negative (C2) connects to the GND of the 9V battery (see circuit diagram above). To reverse the rotation of the motor, reverse the polarity of the conections (C1 - Negative, C2 - Positive).
+  <p></p>
+  The arduino is controled by a simple program writen in C++. The program is as follows:
+  <code>
+    <p></p>‎ 
+    <p></p>&emsp;void setup()
+    <p></p>&emsp;{
+    <p></p>&emsp;pinMode(8, OUTPUT);
+    <p></p>&emsp;}
+    <p></p>
+    <p></p>&emsp;void loop()
+    <p></p>&emsp;{
+    <p></p>&emsp;digitalWrite(8, HIGH);
+    <p></p>&emsp;delay(1000);
+    <p></p>&emsp;digitalWrite(8, LOW);
+    <p></p>&emsp;delay(1000);
+    <p></p>&emsp;}
+  </code>
+  <p></p>
+  In order to connect the Lego motor to the ardiuno, I used a Lego motor extension cord and cut it so the striped cable is able for soldering. I soldered a temporary connector that make it easier to connect the motor connector to a bread board, where the transistor and circuitry is located.
 </body>
 
 </html>
