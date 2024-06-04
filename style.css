@@ -1,8 +1,16 @@
 body {
   font-family: "IBM Plex Sans", sans-serif;
+  font-size: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
+
 th {
   width: 300px;
+}
+
+h1 {
+  font-weight: normal;
 }
 
 table,
@@ -16,11 +24,6 @@ a {
   color: black;
   font-weight: normal;
 }
-
-h1 {
-  font-weight: normal;
-}
-
 p {
   margin: 0;
   padding: 0;
