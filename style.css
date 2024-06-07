@@ -3,6 +3,7 @@ body {
   font-size: 100%;
   padding-left: 10%;
   padding-right: 10%;
+  padding-bottom: 10%;
 }
 
 th {
@@ -24,6 +25,11 @@ a {
   color: black;
   font-weight: normal;
 }
+
+w {
+ color: white; 
+}
+
 p {
   margin: 0;
   padding: 0;
