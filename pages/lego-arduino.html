@@ -2,18 +2,16 @@
 <html>
 
 <head>
-  <title>xela | controlling lego motors</title>
+  <title>hacking lego | xela</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
 </head>
 
 <body>
-  <center>
-    <h1>hacking lego motors with arduino</h1><p>See how you can hack your lego motors and control them via the Arduino IDE program.</p>
-    <br></br>
-    <p></p>
-    </center>
+  <topnav><br>hacking lego motors with arduino | xela<p> </p></topnav>
+  <br><br><br>
+  <center>Hacking since the 21<sup>st</sup> century</center><br><br>
     I had the need to create a reliable and easy way to connect Lego Motors to Arduino. This project used:
     <ul>
       <li>Arduino UNO R3</li>
@@ -29,22 +27,19 @@
   The ouput is connected to the C1 pin of the LEGO motor and the negative (C2) connects to the GND of the 9V battery (see circuit diagram above). To reverse the rotation of the motor, reverse the polarity of the conections (C1 - Negative, C2 - Positive).
   <p></p>
   The arduino is controled by a simple program writen in C++. The program is as follows:
-  <code>
-    <p></p>‎ 
-    <p></p>&emsp;void setup()
-    <p></p>&emsp;{
-    <p></p>&emsp;pinMode(8, OUTPUT);
-    <p></p>&emsp;}
-    <p></p>
-    <p></p>&emsp;void loop()
-    <p></p>&emsp;{
-    <p></p>&emsp;digitalWrite(8, HIGH);
-    <p></p>&emsp;delay(1000);
-    <p></p>&emsp;digitalWrite(8, LOW);
-    <p></p>&emsp;delay(1000);
-    <p></p>&emsp;}
-    <p></p>
-  </code>
+  <p> </p>
+    &emsp;void setup()<br>
+    &emsp;{<br>
+    &emsp;pinMode(8, OUTPUT);<br>
+    &emsp;}<br>
+    &emsp;void loop()<br>
+    &emsp;{<br>
+    &emsp;digitalWrite(8, HIGH);<br>
+    &emsp;delay(1000);<br>
+    &emsp;digitalWrite(8, LOW);<br>
+    &emsp;delay(1000);<br>
+    &emsp;}<br>
+  <br>
   In order to connect the Lego motor to the ardiuno, I used a Lego motor extension cord and cut it so the striped cable is able for soldering. I soldered a temporary connector that make it easier to connect the motor connector to a bread board, where the transistor and circuitry is located. This transistor circuit could also be used to control multiple circuits, for a Remote miniature vehicle.
 </body>
 
