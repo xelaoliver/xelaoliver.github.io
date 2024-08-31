@@ -13,8 +13,30 @@ var camRotX = 0;
 var camRotY = 0;
 var moveBol = [false, false, false, false, false, false, false, false, false, false, false];
 
-const model = [1.000000, -1.000000, -1.000000, 1.000000, -1.000000, 1.000000, -1.000000, -1.000000, 1.000000, -1.000000, -1.000000, -1.000000, 1.000000, 1.000000, -0.999999, 0.999999, 1.000000, 1.000001, -1.000000, 1.000000, 1.000000, -1.000000, 1.000000, -1.000000];
-const faces = [2, 3, 4, 8, 7, 6, 5, 6, 2, 6, 7, 3, 3, 7, 8, 1, 4, 8, 1, 2, 4, 5, 8, 6, 1, 5, 2, 2, 6, 3, 4, 3, 8, 5, 1, 8];
+const model = [];
+const faces = [];
+
+
+let url = window.location.href;
+let normalizedUrl = url.replace(/\?/g, '&').replace('&', '?');
+let params = new URLSearchParams(normalizedUrl.split('?')[1]);
+let facesParam = params.get('faces');
+let vertsParam = params.get('verts');
+
+console.log(facesParam);
+console.log(vertsParam);
+
+if (facesParam != "paste%20faces%20data*") {
+  faces = facesParam;
+} else {
+  faces = [2, 3, 4, 8, 7, 6, 5, 6, 2, 6, 7, 3, 3, 7, 8, 1, 4, 8, 1, 2, 4, 5, 8, 6, 1, 5, 2, 2, 6, 3, 4, 3, 8, 5, 1, 8];
+}
+
+if (vertsParam != "paste%20verts%20data*") {
+  model = vertsParam;
+} else {
+  model = [1.000000, -1.000000, -1.000000, 1.000000, -1.000000, 1.000000, -1.000000, -1.000000, 1.000000, -1.000000, -1.000000, -1.000000, 1.000000, 1.000000, -0.999999, 0.999999, 1.000000, 1.000001, -1.000000, 1.000000, 1.000000, -1.000000, 1.000000, -1.000000];
+}
 
 function vert(vertX, vertY, vertZ) {
   vertDistance.push(Math.sqrt(Math.pow(vertX - camX, 2) + Math.pow(vertY - camY, 2) + Math.pow(vertZ - camZ, 2)) + (Math.random() / 100));
