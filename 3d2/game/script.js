@@ -22,9 +22,11 @@ let normalizedUrl = url.replace(/\?/g, '&').replace('&', '?');
 let params = new URLSearchParams(normalizedUrl.split('?')[1]);
 let facesParam = params.get('faces');
 let vertsParam = params.get('verts');
+let zoomParam = params.get('zoom');
 
 console.log(facesParam);
 console.log(vertsParam);
+console.log(zoomParam);
 
 if (facesParam != "paste%20faces%20data*") {
   faces = facesParam;
@@ -350,9 +352,9 @@ function loadData() {
 
   for (let q = 0; q < faces.length; q = q + 3) {
     fillColour = "#e3a48c";
-    vert(model[(faces[q] * 3) - 3] * 10, model[(faces[q] * 3) - 2] * 10, model[(faces[q] * 3) - 1] * 10);
-    vert(model[(faces[q + 1] * 3) - 3] * 10, model[(faces[q + 1] * 3) - 2] * 10, model[(faces[q + 1] * 3) - 1] * 10);
-    vert(model[(faces[q + 2] * 3) - 3] * 10, model[(faces[q + 2] * 3) - 2] * 10, model[(faces[q + 2] * 3) - 1] * 10);
+    vert(model[(faces[q] * 3) - 3] * zoom, model[(faces[q] * 3) - 2] * zoom, model[(faces[q] * 3) - 1] * zoom);
+    vert(model[(faces[q + 1] * 3) - 3] * zoom, model[(faces[q + 1] * 3) - 2] * zoom, model[(faces[q + 1] * 3) - 1] * zoom);
+    vert(model[(faces[q + 2] * 3) - 3] * zoom, model[(faces[q + 2] * 3) - 2] * zoom, model[(faces[q + 2] * 3) - 1] * zoom);
     endPath();
   }
 };
