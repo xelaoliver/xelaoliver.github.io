@@ -13,8 +13,8 @@ var camRotX = 0;
 var camRotY = 0;
 var moveBol = [false, false, false, false, false, false, false, false, false, false, false];
 
-const model = [];
-const faces = [];
+var model = [];
+var faces = [];
 
 
 let url = window.location.href;
