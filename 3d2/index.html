@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>3d2 menu</title>
+  <title>menu screen</title>
   <style>
     div {
       margin: 0;
@@ -20,7 +20,8 @@
     function joinServer() {
       let parmFaces = document.getElementById("faces").value
       let parmVerts = document.getElementById("verts").value
-      window.open("https://xelaoliver.github.io/3d2/game/?faces="+parmFaces+"?verts="+parmVerts, '_blank').focus();
+      let parmZoom = document.getElementById("zoom").value
+      window.open("https://xelaoliver.github.io/3d2/game/?faces="+parmFaces+"?verts="+parmVerts+"?zoom="+parmZoom, '_blank').focus();
     }
   </script>
 </head>
@@ -32,6 +33,7 @@
     
     <p><textarea id="faces" name="text" rows="6" cols="35">paste faces data*</textarea></p>
     <p><textarea id="verts" name="text" rows="6" cols="35">paste verts data*</textarea></p>
+    <p><textarea id="zoom" name="text" rows="6" cols="35">paste debug zoom data*</textarea></p>
     
     <p><button type="button" onclick="window.open('https://github.com/xelaoliver/3d2', '_blank').focus();">see updates and logs</button></p>
 
