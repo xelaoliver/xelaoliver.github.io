@@ -13,9 +13,10 @@ if (localStorage.getItem("username") == null) {
 
 var cloud_main = random_id()+localStorage.getItem("username")+" has joined the chat.";
 var old_cloud_main = null;
-var old_cloud_request;
 var cloud_request;
+var old_cloud_request = null;
 var cloud_respond;
+var old_cloud_respond = null;
 var silent = false;
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -39,7 +40,9 @@ function send(text) {
 		if (!silent) {
 			cloud_main = random_id()+old_username+" changed their name to "+localStorage.getItem("username");
 		}
-	} else if (text.substring(0, 5) == "/list") {
+	} else if (text.substring(0, 5) == "/ban ") {
+    cloud_request = random_id()+"ban"+text.substring(5, text.length);
+  } else if (text.substring(0, 5) == "/list") {
 		cloud_request = random_id()+"list";
 	} else if (text.substring(0, 8) == "/silent ") {
 		cloud_main = random_id()+text.substring(8, text.length);
@@ -64,11 +67,50 @@ function send(text) {
 }
 
 function update_message() {
+  if (old_cloud_main != cloud_main) {
+    messages.unshift(cloud_main.substring(3, cloud_main.length));
+    display_messages();
+  }
+  if (old_cloud_respond != cloud_respond) {
+    console.log(cloud_respond);
+  }
+  
+  if (old_cloud_request != cloud_request) {
+    if (cloud_request.length == 7 && cloud_request.substring(3, cloud_request.length) == "list") {
+      cloud_respond = random_id()+localStorage.getItem("username");
+    }
+  }
+  old_cloud_main = cloud_main;
+  old_cloud_request = cloud_request;
+  old_cloud_respond = cloud_respond;
+}
+
+/*
+function update_message() {
 	if (old_cloud_main != cloud_main) {
 		messages.unshift(cloud_main.substring(3, cloud_main.length));
 		display_messages();
 	}
+  if (old_cloud_request != cloud_request) {
+    if (cloud_request.length == 7) {
+      cloud_respond = random_id()+localStorage.getItem("username");
+    } else if (cloud_request.substring(3, 6) == "ban") {
+      if (cloud_request.substring(6, cloud_request.length) == localStorage.getItem("username")) {
+        alert("You've been baned");
+      }
+    }
+  }
+  if (old_cloud_respond != cloud_respond) {
+    messages.unshift("- "+cloud_respond.substring(3, cloud_respond.length));
+    if (old_cloud_request != cloud_request) {
+      messages.unshift("List of all active users:");
+    }
+    display_messages();
+  }
 	old_cloud_main = cloud_main;
+  old_cloud_request = cloud_request;
+  old_cloud_respond = cloud_respond;
 }
+*/
 
 setInterval(function () {update_message()}, 15);
