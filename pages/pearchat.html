@@ -51,7 +51,7 @@ function send() {
   } else if (txt == "/clear") {
     messages = [];
     displayChat();
-  } else if (txt.length < 100 && txt != "") {
+  } else if (txt != "") {
     cloud_chat = Math.floor(Math.random()*(999-100)+100)+localStorage.getItem("rank")+localStorage.getItem("username")+": "+txt;
   };
 };
