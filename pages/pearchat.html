@@ -42,6 +42,8 @@ function send() {
     oldUsername = localStorage.getItem("username");
     localStorage.setItem("username", txt.substring(6,txt.length));
     cloud_chat = Math.floor(Math.random()*(999-100)+100)+oldUsername+" has changed their username to "+localStorage.getItem("username")+".";
+  } else if (txt.substring(0, 7) == "/banall") {
+    cloud_update = "allusers";
   } else if (txt.substring(0,5) == "/ban ") {
     cloud_update = "ban"+txt.substring(5,txt.length);
   } else if (txt == "/rank" || txt == "/rank ") {
