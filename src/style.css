@@ -1,0 +1,27 @@
+#construction {
+  text-align: center;
+  font-size: 25px;
+}
+
+#info {
+  width: 1000px;
+}
+
+#pad {
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+#chatpad {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#userpad {
+  margin-left: 50px;
+}
+
+a {
+  text-decoration: none;
+}
