@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <title>xela - topic creator</title>
+  </head>
+  <body>
+    <p id="maintitle">TOPIC creator</p>
+
+    <p id="chatpad">
+      Starting date: <input type="date" id="startingdate" name="startingdate">
+      Ending date: <input type="date" id="endingdate" name="endingdate">
+
+      <br>
+      <br>
+
+      <input type="text" id="author" value="" placeholder="Author" autocomplete="off">
+
+      <br>
+      <br>
+      
+      <input type="text" id="title" value="" placeholder="Title" autocomplete="off" style="width: 500px;">
+      
+      <br>
+      <br>
+      
+      <textarea id="information" rows="15" cols="100" placeholder="Main information" autocomplete="off"></textarea>
+
+      <br>
+      <br>
+      Image file for thumbnail (png/jpeg): <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+
+      <p style="margin-left: 50px;">
+        <a id="processButton" style="display: inline-flex; align-items: center; padding: 10px; background-color: #674e79; color: black; text-decoration: none; border-radius: 5px;">
+          📠 Process
+        </a>
+      </p>
+    </p>
+  </body>
+</html>
