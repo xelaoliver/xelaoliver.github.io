@@ -21,10 +21,17 @@
 
       <br>
       <br>
+
+      Colour used for the box <b>in hex</b>: <input type="color" id="colour" name="colour" value="#ffffff"/>
+
+      <br>
+      <br>
       
       <input type="text" id="title" value="" placeholder="Title" autocomplete="off" style="width: 500px;">
       
       <br>
+      <br>
+      If you want to have returns, please use &lt;br&gt;&lt;br&gt; instead of return.
       <br>
       
       <textarea id="information" rows="15" cols="100" placeholder="Main information" autocomplete="off"></textarea>
@@ -33,11 +40,27 @@
       <br>
       Image file for thumbnail (png/jpeg): <input type="file" id="image" name="image" accept="image/png, image/jpeg">
 
-      <p style="margin-left: 50px;">
-        <a id="processButton" style="display: inline-flex; align-items: center; padding: 10px; background-color: #674e79; color: black; text-decoration: none; border-radius: 5px;">
-          📠 Process
-        </a>
-      </p>
+      <br>
+      <br>
+      
+      <button type="button" onclick="process()">📠 Process</button>
+
+      <script src="script.js"></script>
+
+      <br>
+      <br>
+
+      <hr id="pad">
+
+      <br>
+      <br>
+
+      <span id="chatpad">Make sure to include the jpeg/png file in a directory that can be accessed. Bellow is how the HTML would be displayed on TOPIC. If you want the HTML code, acess the console.</span>
+
+      <br>
+      <br>
+      
+      <span style="margin-left: 50px; margin-right: 50px;" id="output">Process to see the HTML result code.</span>
     </p>
   </body>
 </html>
