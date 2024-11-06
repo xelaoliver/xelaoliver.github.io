@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../src/style.css">
+		<title>xela - brainfսc&#954;</title>
+	</head>
+		<body>
+			<p id="maintitle">brainfuc&#954;</p>
+			
+			<p id="pad">
+				A brainfuc&#954; interpreter written in JS! Due to some computers having curse-word detection systems, I have replaced the end character of brainfuc&#954 with the small kappa HTML numeric code: &#38;#954;.
+				
+				<br>
+				<br>
+				
+				- If you want more information on brainfuc&#954, please visit: <a style="color: black; text-decoration: none;" target="_blank" href="https://en.wikipedia.org/wiki/Brainfuck">wikipedia.org/wiki/Brainfuc&#954</a>.<br>
+				- If you want to have some examples, please visit: <a style="color: black; text-decoration: none;" target="_blank" href="https://brainfuck.org/">brainfuc&#954.org</a>.
+				
+				<br>
+				<br>
+				
+				<hr id="pad">
+				
+				<br>
+			</p>
+			
+			<div id="pad">
+				<textarea id="code" rows="5" cols="33">Hello World!: ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.</textarea>
+				<br>
+				<button onClick="run()">RUN</button>
+				
+				<br>
+				<br>
+				
+				<div id="out"></div>
+			</div>
+			
+			<p id="pad">
+				<br>
+				<hr id="pad">
+				
+				<p id="maintitle">information</p>
+				
+				<p id="chatpad">
+					Overview:<br>
+					Brainfuc&#954 is an esoteric, extremely limiting, turing complete programming language developed by Urban Muller. He was inspired by the old smallest possible 1024-byte compiler for FALSE, he created a 296-byte (and a later 240-byte) compiler in 1993 with 8 commands and a 1-byte per cell 'infinite' ribbon of memory.
+					
+					<br>
+					<br>
+					
+					Brainfuc&#954 is not practical and can be called a Turing Carpet as it is intended to amuse and break down complicated functions into small instructions. Its name comes from is a slang term which refers to something that is complicated or so unusual it exceeds the limits of one's poor mind. Some substitutes of the name can be: brainfsck, branflakes, brainoof, brainf or bf.
+					
+					<br>
+					<br>
+					
+					Language:<br>
+					The language consists of 8 commands:
+					
+					<br>
+					<br>
+					
+					&#62; - Move the data pointer by 1 cell to the right<br>
+					&#60; - Move the data pointer by 1 cell to the left<br>
+					+ - Adds 1 to the byte at the data pointer<br>
+					- - Negates 1 to the byte at the data pointer<br>
+					. - Outputs the ASCII equivalent of the byte at the data pointer<br>
+					, - Accepts 1 byte of input, stores it in the data pointer cell<br>
+					[ - If the byte at the data pointer is 0, jump forward to the matching closing bracket<br>
+					] - If the byte at the data pointer is non-0, jump backwards to the matching opening bracket<br>
+					
+					<br>
+					<br>
+					For example, this script: ++++++++[>++++++++<-]>+. outputs 'A' as it is setting cell 0 (where the data pointer is) to 8, moving the data pointer left and adding 8 to cell 1 (where the data pointer is) and then reducting 1 from the previous cell so it does not go in an infinite loop. After that repeats 8 times, 1 is added to produce 65. In reality it is just doing: 8*8+1
+					
+					<br>
+					<br>
+					I love this esoteric programming language. It is both a challenge and is a real weird thing to know, so if you want more pages like this with JS demos and some information at the bottom:
+				</p>
+				
+				<p style="text-align: center;">
+      <a href="https://buymeacoffee.com/alex.oliver" target="_blank" style="display: inline-flex; align-items: center; padding: 10px; background-color: #ffdd57; color: black; text-decoration: none; border-radius: 5px;">
+        <img src="https://studio.buymeacoffee.com/assets/img/bmc-meta-new/new/android-icon-192x192.png" alt="" style="height: 1em; width: 1em; margin-right: 5px;">
+        Buy me a coffee!
+      </a>
+    </p>
+			</p>
+		<script src="script.js"></script>
+	</body>
+</html>
