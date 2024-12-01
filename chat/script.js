@@ -75,12 +75,7 @@ function send() {
 		}
 	} else if (input.substring(0, 6) == "/rank ") {
 		if (localStorage.getItem("prev") == "op" || localStorage.getItem("prev") == "owner") {
-			if (input.substring(6).lower.includes("owner")) {
-				messages.unshift("You can't have a rank including owner!<br>");
-				display("chatpad", messages);
-			} else {
-				localStorage.setItem("rank", input.substring(6).replace(/(<([^>]+)>)/ig, ''));
-			}
+			localStorage.setItem("rank", input.substring(6).replace(/(<([^>]+)>)/ig, ''));
 		} else {
 			messages.unshift("You must be an opperator to do this.<br>");
 			display("chatpad", messages);
