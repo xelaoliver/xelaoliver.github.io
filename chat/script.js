@@ -15,7 +15,7 @@ if (localStorage.getItem("prev") == null) {
 	localStorage.setItem("prev", "non");
 }
 
-var cloud_chat; var cloud_respond = null;
+var cloud_chat; var cloud_respond = "diddlySquatFarmShop";
 var oldCloud_chat = null; var oldCloud_respond = null;
 
 if (localStorage.getItem("prev") == "owner") {
