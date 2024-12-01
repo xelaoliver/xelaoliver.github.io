@@ -77,7 +77,7 @@ function send() {
 		if (localStorage.getItem("prev") == "op" || localStorage.getItem("prev") == "owner") {
 			if (input.substring(6).lower.includes("owner")) {
 				messages.unshift("You can't have a rank including owner!<br>");
-			display("chatpad", messages);
+				display("chatpad", messages);
 			} else {
 				localStorage.setItem("rank", input.substring(6).replace(/(<([^>]+)>)/ig, ''));
 			}
