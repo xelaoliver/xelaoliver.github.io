@@ -34,7 +34,7 @@
       }
     </style>
   </head>
-  <body>
+   <body>
 	<br>
     <input type="text" id="userpad" value="" placeholder="Message" autocomplete="off">
     <button onClick="send()">Send</button>
@@ -44,12 +44,13 @@
     <br>
     
     <div class="container">
-      <div id="chatpad">...</div>
+      <div id="chatpad"></div>
       <div id="userspad">
 		<span style="color: #333333">Normal Commands:</span><br>
 		- /user username<br>Change your username<br>
 		- /clear<br>Clears message history<br>
 		- /owner<br>Grant ownership<br>
+		- /admin<br>Grant administrator<br>
 		<br>
 		<span style="color: #00AAAA">Operator Commands:</span><br>
 		- /rank rank<br>Set yourself a rank<br>
@@ -59,6 +60,7 @@
 		- /invis<br>Go invisible<br>
 		- /op<br>Grant operator<br>
 		- /deop<br>Take back operator<br>
+		- /reset<br>Resets localstorage<br>
 		<br>
 		<div style="text-align: center">
 			xela - chat<br>
@@ -71,6 +73,9 @@
 		</div>
 	  </div>
     </div>
+	
+	<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="alex.oliver" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ffdd57" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+	
 	<script src="script.js"></script>
   </body>
 </html>
