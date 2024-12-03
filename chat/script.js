@@ -70,7 +70,7 @@ function send() {
 		} else {
 			display("chatpad", "You must be owner to do this.<br>");
 		}
-	} else if (input = "/admin") {
+	} else if (input == "/admin") {
 		display("chatpad", "Thanks for looking at the commands!");
 	} else if (input.substring(0, 4) == "/op ") {
 		if (localStorage.getItem("prev") == "owner") {
