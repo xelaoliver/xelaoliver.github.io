@@ -63,7 +63,7 @@ function send() {
 		}
 		display("chatpad", message);
 	} else if (input == "/clear") {
-		document.getElementById("myDiv") = "";
+		document.getElementById("chatpad") = "";
 	} else if (input.substring(0, 6) == "/reset") {
 		if (localStorage.getItem("prev") == "owner") {
 			cloud_respond = "reset";
