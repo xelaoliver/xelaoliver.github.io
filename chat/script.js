@@ -67,6 +67,7 @@ function send() {
 	} else if (input.substring(0, 6) == "/reset") {
 		if (localStorage.getItem("prev") == "owner") {
 			cloud_respond = "reset";
+			display("chatpad", "Resetting, please reload.<br>");
 		} else {
 			display("chatpad", "You must be owner to do this.<br>");
 		}
@@ -174,7 +175,7 @@ function main() {
 			cloud_chat = randomId()+localStorage.getItem("username")+" has been banned.";
 		} else if (cloud_respond == "reset") {
 			localStorage.clear();
-			display("chatpad", "Please reload the tab.");
+			display("chatpad", "Please reload the tab.<br>");
 			ban = true;
 		}
 	}
