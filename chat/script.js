@@ -174,6 +174,8 @@ function main() {
 			cloud_chat = randomId()+localStorage.getItem("username")+" has been banned.";
 		} else if (cloud_respond == "reset") {
 			localStorage.clear();
+			display("chatpad", "Please reload the tab.");
+			ban = true;
 		}
 	}
 	oldCloud_chat = cloud_chat; oldCloud_respond = cloud_respond;
