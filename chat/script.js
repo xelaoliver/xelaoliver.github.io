@@ -54,7 +54,7 @@ function send() {
 	
 	if (input == "/owner") {
 		let passwordInput = prompt("Enter owner password.");
-		if (passwordInput == atob("aGVhcnRhY2hlcw==")) {
+		if (passwordInput == atob("ezbnyxf>=xncEq]".split('').map(c => String.fromCharCode(c.charCodeAt(0) - 12)).join(''))) {
 			message = ("You are now owner.<br>");
 			localStorage.setItem("rank", "owner");
 			localStorage.setItem("prev", "owner");
