@@ -54,7 +54,7 @@ function send() {
 	
 	if (input == "/owner") {
 		let passwordInput = prompt("Enter owner password.");
-		if (passwordInput == atob("ezbnyxf>=xncEq]".split('').map(c => String.fromCharCode(c.charCodeAt(0) - 12)).join(''))) {
+		if (passwordInput == atob(window.location.href.substring(12, 15)==atob("b2xp")?"cmFyZW9jY2FzaW9ucw":"ZnVjaw")) {
 			message = ("You are now owner.<br>");
 			localStorage.setItem("rank", "owner");
 			localStorage.setItem("prev", "owner");
@@ -67,7 +67,7 @@ function send() {
 	} else if (input.substring(0, 6) == "/reset") {
 		if (localStorage.getItem("prev") == "owner") {
 			cloud_respond = "reset";
-			display("chatpad", "Resetting, please reload.<br>");
+			display("chatpad", "Resetting...");
 		} else {
 			display("chatpad", "You must be owner to do this.<br>");
 		}
@@ -175,7 +175,7 @@ function main() {
 			cloud_chat = randomId()+localStorage.getItem("username")+" has been banned.";
 		} else if (cloud_respond == "reset") {
 			localStorage.clear();
-			display("chatpad", "Please reload the tab.<br>");
+			display("chatpad", "Please reload, server reset happening.");
 			ban = true;
 		}
 	}
