@@ -68,7 +68,7 @@ function send() {
 			let passwordInput = prompt("Enter mayor password");
 			
 			if (passwordInput == atob(window.location.href.substring(parseInt(1000, 0b10), parseInt(1100, 2))===atob("eGVsYQ==")?Buffer.from("6332466d5"+window.location.href.substring(11, 12)+"585235"+0b1100100101111+"6870636d513d", atob("aGV4")).toString():"ZnVja3NoaXRjcmFw")) {
-				localStorage.setIem("rank", "mayor");
+				localStorage.setItem("rank", "mayor");
 				display("You are now mayor");
 			} else {
 				display("Go to hell!");
