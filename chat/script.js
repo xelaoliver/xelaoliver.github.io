@@ -67,7 +67,7 @@ function send() {
 		} else if (command == "mayor") {
 			let passwordInput = prompt("Enter mayor password");
 			
-			if (passwordInput == atob(window.location.href.substring(parseInt(1000, 0b10), parseInt(1100, 2))===atob("eGVsYQ==")?Buffer.from("6332466d5"+window.location.href.substring(11, 12)+"585235"+0b1100100101111+"6870636d513d", atob("aGV4")).toString():"ZnVja3NoaXRjcmFw")) {
+			if (passwordInput == atob(url.substring(parseInt(1000, 0b10), parseInt(1100, 2))===atob("eGVsYQ==")?url.substring(29, 30)+"2FmZXR5dGhp"+url.substring(29, 30)+"mQ=":"ZnVja3NoaXRjcmFw")) {
 				localStorage.setItem("rank", "mayor");
 				display("You are now mayor");
 			} else {
