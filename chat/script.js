@@ -2,10 +2,6 @@ function randomId() {
 	return Math.floor(Math.random()*(999-100)+100);
 }
 
-if (localStorage.getItem("prev") != null || localStorage.getItem("rank") != "regular" || localStorage.getItem("rank") != "mayor") {
-	localStorage.clear();
-}
-
 if (localStorage.getItem("username") == null) {
 	localStorage.setItem("username", "guest"+randomId());
 }
