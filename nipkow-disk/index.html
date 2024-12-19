@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>xela - nipkow disk simulator</title>
+  <style>
+    canvas {
+      display: inline;
+    	padding: 10px;
+    	color: black;
+    	border-radius: 7px;
+    	font-size: 16px;
+      width: 800px; 
+      height: relative;
+    }
+  </style>
+  <link rel="stylesheet" href="../src/style.css">
+	<link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="xela" />
+    <link rel="manifest" href="/images/favicons/site.webmanifest" />
+</head>
+<body>
+  <p id="maintitle">Nipkow Disk Simulator and Generator</p>
+
+  <p id="chatpad">
+    The Nipkow disk is a revolution in scanning and image projection technology. It's first use was 36 years after its pantent in 1884, John Logie Baird's mechanical television which was able to record and display moving images. When the Nipkow disk is spinning at a high RPM, it allows a small <i>pixel</i> of light to reach a photo-sensor located behind the disk, the output voltage from the photo-sensor is then amplified and then transmitted over radio to a mechanical television set, which is basically what I stated but in reverse. Mechanical televisions and cameras are bulky which is why EMI Cameras quickly took over. It's a shame because its such a mechanical marvel that utilises the persistance of vision to create moving images. 
+  </p>
+  <br><hr id="pad">
+  <p id="pad">
+    <canvas id="canvas"></canvas>
+    <br>
+    Measurements are in mm
+    <br><br>
+    Nipkow Disk Radius: <input type="number" id="disk-radius" value=250>
+    <br><br>
+    Hole Radius: <input type="number" id="hole-radius" value=5>
+    <br><br>
+    Hole spacing from rim: <input type="number" id="hole-spacing" value=5>
+    <br><br>
+    Verticall scan-lines: <input type="number" id="verticall-scan-lines" value=12>
+    <br><br>
+    Rotation speed: <input type="number" id="rotation-speed" value=0 min=0 max=1 step=0.01>
+    <script src="script.js"></script>
+      <br><br>
+    Square holes give a more accurate image to circular holes. Purely because I am lazy and can't be bothered to program that in, I have left circular holes in this simulation.
+  </p>
+
+  <p id="maintitle">how i made this</p>
+
+  <hr id="pad"><br>
+  
+  <p id="chatpad">
+    I used HTML and JS to achieve an interacitve Nipkow Disk Simulation. The hardest thing to achieve was rotating and drawing the circles. I had to use rotation matricies which incorperated sine and cosine functions. Here is the rotation matrix function:
+
+    <br><br>
+    
+    <code>
+      // x = hole x, y = hole y, randian = rotation, cx = center of rotation x, cy = center of rotation y<br><br>
+      function rotationMatrix(x, y, radian, cx, cy) {<br>
+        &emsp; const relativeX = x-cx;<br>
+        &emsp; const relativeY = y-cy;<br>
+        <br>
+        &emsp; const rotatedX = relativeX*Math.cos(radian) - relativeY*Math.sin(radian);<br>
+        &emsp; const rotatedY = relativeX*Math.sin(radian) + relativeY*Math.cos(radian);<br>
+	      <br>
+        &emsp; return [rotatedX+cx, rotatedY+cy];<br>
+      }
+    </code>
+    <br><br>
+
+    The nipkow disk takes in multiple arguments: nipkow disk radius, hole radius, hole distance from rim, verticall scan-lines which all create a Nipkow Disk. <br><br>
+
+    
+  </p>
+</body>
+</html>
