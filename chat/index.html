@@ -1,56 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>xela - chat</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="https://kit.fontawesome.com/1d1c32590e.js" crossorigin="anonymous"></script>
-  <script src="https://kihtrak.com/cloud_variable/cloudify.min.js"></script>
-	<link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>chat board</title>
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/favicons/favicon.svg" />
     <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="xela" />
     <link rel="manifest" href="/images/favicons/site.webmanifest" />
+    <script src="https://kihtrak.com/cloud_variable/cloudify.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        #chat-container, .box {
+            border: 1px solid #767676;
+            padding: 4px;
+            border-radius: 3px;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        body {
+            max-width: max-content;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-	<input type="text" id="text-input" value="" placeholder="Message the chat board" autocomplete="off">
-	<button onClick="send()"><i class="fa-solid fa-paper-plane"> &nbsp; </i>Send</button>
+    <br><br>
+    <table>
+        <tr><td><input type="text" id="text-input" placeholder="Enter a message..." autocomplete="off" style="width: 975px;"> <button>Send</button></td></tr>
+        <tr>
+            <td rowspan="2"><div id="chat-container" style="height: 354px; width: 1024px; overflow: auto; word-wrap: normal;">
+                <br>
+                Commands: <br>
+                - /user (username) <br>
+                - /clear
+            </div></td>
+        </tr>
+    </table>
 
-	<div style="background-color: #f0f1f3; display: inline-block; width: calc(100% - 552px);">
-		<i class="fa-solid fa-comment"></i>
-		&nbsp; 𝖃𝖊𝖑𝖆 𝕮𝖍𝖆𝖙
-		&nbsp; <i class="fa-solid fa-ranking-star"></i> &nbsp; Rank: <span id="rank"></span>
-		&nbsp; <i class="fa-solid fa-user"></i> &nbsp; Username: <span id="username"></span>
-		&nbsp; <i class="fa-solid fa-clock"></i> &nbsp; Time: <span id="time"></span>
-	</div>
-	
-	<div style="background-color: #f0f1f3; float: right; width: 200px;">
-		<i class="fa-brands fa-youtube"></i> &nbsp; YouTube Theatre
-		<br><br>
-		<span id="youtube-video"></span>
-		
-		<br>
-		
-		<i class="fa-solid fa-circle-info"></i> &nbsp; Information
-		
-		<br><br>
-		
-		Use /help to see all commands
-		
-		<br><br>
-		
-		<span style="color: #ffd43a">mayor</span> - A role of honour that everyone must bow down to<br><br>
-		<span style="color: #21cc98">regular</span> - An average villager<br><br>
-		
-		The creator of this website is not responsible for any instances of flagging or reporting. This platform should NOT be used as a basis for assigning consequences nor rewards.
-	</div>
-	
-	<br><br>
-	
-	<div style="background-color: #f0f1f3;" class="hor-exp" id="chat"></div>
-  
-  <script src="script.js"></script>
+    <div style="width: 1024px; text-align: center; position: fixed; bottom: 4px;"><a href="https://xelaoliver.github.io" style="text-decoration: none; color: black;">alex oliver</a></div>
 </body>
 </html>
