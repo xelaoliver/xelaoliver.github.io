@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Oliver</title>
+    <style>
+        .page {
+            padding: 50px;
+            font-family: Arial, sans-serif;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+        }
+
+        .spam {
+            position: fixed;
+            bottom: -6px;
+            right: 10px;
+            width: 75px;
+            height: auto;
+            transition: all 1s ease-out;
+            cursor: pointer;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            margin: 0px;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff4c4c;
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 25px;
+            }
+        }
+    </style>
+    <script>
+        var a = 0;
+        var b = ["That is my spam, excuse me.", " Don't touch it!", " Alright, quit at this...", " You are going to dent the tin :("]
+
+        function move() {
+            const spam = document.getElementById("spam");
+
+            let x = parseInt(spam.style.right) || 0;
+            let m = Math.floor(Math.random()*300)+100;
+            let d = Math.random() > 0.5 ? 1 : -1;
+            let n = x+(m*d);
+            
+            if (n < 0) n *= -1;
+            if (n > window.innerWidth-100) { n = window.innerWidth-100; }
+
+            spam.style.right = n+"px";
+
+            a ++;
+
+            if (a%15 == 0 && a != 0) {
+                document.getElementById("page").insertAdjacentHTML("beforeend", b[Math.floor(a/15)]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="page" id="page">
+        Alex Oliver bring you <a href="#">this page</a>, <a href="https://github.com/xelaoliver" target="_blank">a github</a> and <a href="mailto:dev.alexoliver@gmail.com">a way of contact</a>.<br><br>
+    </div>
+
+    <img class="spam" src="spam.png" alt="spam" onclick="move()" id="spam">
+</body>
