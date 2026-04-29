@@ -12,7 +12,7 @@
         const ctx = canvas.getContext("2d");
 
         const rotateAmount = 2*(Math.PI/180); // change
-        const speed = 2;
+        var speed = 2;
         const width = 10;
         const growth = 30;
         var pX = canvas.width/2;
@@ -22,8 +22,8 @@
         var length = 100;
         var targetLength = length;
 
-        var fX = Math.floor(Math.random()*canvas.width);
-        var fY = Math.floor(Math.random()*canvas.height);
+        var fX = 10+Math.floor(Math.random()*(canvas.width-10));
+        var fY = 10+Math.floor(Math.random()*(canvas.height-10));
 		
 		var left = false; var right = false;
 
@@ -69,11 +69,12 @@
             pX += speed*Math.sin(pDir);
             pY += speed*Math.cos(pDir);
 
-            if (Math.sqrt(Math.pow(pX-fX, 2)+Math.pow(pY-fY, 2)) < width+2.5) {
+            if (Math.sqrt(Math.pow(pX-fX, 2)+Math.pow(pY-fY, 2)) < width+5) {
                 targetLength += growth;
+				speed += .25; // change if too hard
 
-                fX = Math.floor(Math.random()*canvas.width);
-                fY = Math.floor(Math.random()*canvas.height);
+                fX = 10+Math.floor(Math.random()*(canvas.width-10));
+                fY = 10+Math.floor(Math.random()*(canvas.height-10));
             }
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
