@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <head>
-    <title>Worm</title>
+    <title>worm</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
-    Alex Oliver, 2026
-    <p>WORM, snake with <i>realistic</i> bodily movements, controlled with your left and right arrow keys. Reload this page upon your inevitable death and check out the source code to alter with the worm's biological factors.</p>
-    <canvas id="canvas" width="640" height="480" style="border: 1px solid black;"></canvas>
+<body style="width: 80%; margin-left: auto; margin-right: auto;">
+    <a href=""><div style="text-align: center;"><img src="worm.gif"></a></div>
+
+    <br><br>
+
+    <canvas id="canvas" width="640" height="480" style="border: 1px solid black; border-radius: 14px; float: left;"></canvas>
+    
+    <div style="float: right; width: calc(100% - 647px);">
+        Snake with <i>realistic</i> bodily movements, controlled with your <b>mouse's scroll wheel</b> or <b>left and right arrow keys</b> (relative to worm's direction). The more balls you eat, the longer you grow!
+        
+        <p><b>Reload</b> this page upon your inevitable death!</p>
+        
+        Check out the source code to alter with the worm's biological factors. Our developer<i>s</i> created this as a proof of concept, to be programmed by others easily. Originally, this game was to be created for the <a href="https://en.wikipedia.org/wiki/Vectrex" style="text-decoration: none; color: red;">Vectrex</a>, a 1982 home video console with a vector CRT display. In addition, this game could be ported to a microcontroller with a DAC and rotary encoder with the display of a oscilloscope.
+
+        <p>
+            The game stores the position of the worm's head and moves it at a constant speed per frame, in a specified direction. However, before each movement, it's position and rotation is saved to an array that removes the last element of itself if it's length is greater than the worm's. Next, we calculate if the head is closer than <i>X</i> amount of units away from a ball, if so we increment the worm's length and move the ball to a random location. To draw the worm's body, we itterate through the array and draw each side of the snake with a conditional loop. The head and tail of the snake cones inwards for aesthetics.
+        </p>
+
+        <a href="mailto:dev.alexoliver@gmail.com" style="text-decoration: none; color: red;">Alex Oliver</a>, 2026
+    </div>
 
     <script>
         const canvas = document.getElementById("canvas");
@@ -62,14 +79,14 @@
             return 0;
         }
 
-        function main() {
+        function main(timestamp) {
 			if (left) { pDir += rotateAmount; }
 			if (right) { pDir -= rotateAmount; }
 
             pX += speed*Math.sin(pDir);
             pY += speed*Math.cos(pDir);
 
-            if (Math.sqrt(Math.pow(pX-fX, 2)+Math.pow(pY-fY, 2)) < width+5) {
+            if (Math.sqrt(Math.pow(pX-fX, 2)+Math.pow(pY-fY, 2)) < width+2.5) {
                 targetLength += growth;
 
                 fX = 20+Math.floor(Math.random()*(canvas.width-20));
@@ -83,23 +100,22 @@
                 tail.pop();
             }
 
-            if (body(1, -1) || body(-1, 1) || pX < 0 || pX > canvas.width || pY < 0 || pY > canvas.height) {
-                alert(`Game over, your score was ${(targetLength-100)/growth}!`);
-                clearInterval(game);
-            }
-
             ctx.beginPath();
             ctx.arc(fX, fY, 5, 0, 2*Math.PI);
             ctx.stroke();
+
+            if (body(1, -1) || body(-1, 1) || pX < 0 || pX > canvas.width || pY < 0 || pY > canvas.height) {
+                alert(`Game over, your score was ${(targetLength-100)/growth}!`);
+            } else {
+                requestAnimationFrame(main);
+            }
         }
 
-		/*
         function rotate(event) {
             let a = event.deltaY*-rotateAmount;
             a = Math.max(-.075, Math.min(.075, a));
             pDir += a;
         }
-		*/
 		
 		function handleKeyDown(e) {
     		if (e.key === "ArrowLeft") {
@@ -125,11 +141,8 @@
 
 		document.addEventListener("keydown", handleKeyDown);
  		document.addEventListener("keyup", handleKeyUp);
+        document.querySelector("body").onwheel = rotate;
 
-        const game = setInterval(function() {
-            main()
-        }, 1000/60);
+        requestAnimationFrame(main);
     </script>
-
-	<img src="eh.gif">
 </body>
