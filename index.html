@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <head>
     <title>worm</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 <body style="width: 80%; margin-left: auto; margin-right: auto;">
     <a href=""><div style="text-align: center;"><img src="worm.gif"></a></div>
 
     <br><br>
 
-    <canvas id="canvas" width="640" height="480" style="border: 1px solid black; border-radius: 14px; float: left;"></canvas>
+    <canvas id="canvas" width="640" height="480" style="border: 1px solid black; border-radius: 14px; float: left;" onclick="run()"></canvas>
     
     <div style="float: right; width: calc(100% - 647px);">
         Snake with <i>realistic</i> bodily movements, controlled with your <b>mouse's scroll wheel</b> or <b>left and right arrow keys</b> (relative to worm's direction). The more balls you eat, the longer you grow!
@@ -20,8 +23,6 @@
         <p>
             The game stores the position of the worm's head and moves it at a constant speed per frame, in a specified direction. However, before each movement, it's position and rotation is saved to an array that removes the last element of itself if it's length is greater than the worm's. Next, we calculate if the head is closer than <i>X</i> amount of units away from a ball, if so we increment the worm's length and move the ball to a random location. To draw the worm's body, we itterate through the array and draw each side of the snake with a conditional loop. The head and tail of the snake cones inwards for aesthetics.
         </p>
-
-        <a href="mailto:dev.alexoliver@gmail.com" style="text-decoration: none; color: red;">Alex Oliver</a>, 2026
     </div>
 
     <script>
@@ -38,6 +39,7 @@
         var tail = [];
         var length = 100;
         var targetLength = length;
+        var game = false;
 
         var fX = 20+Math.floor(Math.random()*(canvas.width-20));
         var fY = 20+Math.floor(Math.random()*(canvas.height-20));
@@ -143,6 +145,63 @@
  		document.addEventListener("keyup", handleKeyUp);
         document.querySelector("body").onwheel = rotate;
 
-        requestAnimationFrame(main);
+        ctx.font = "50px Times New Roman";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "red";
+        ctx.fillText("Press key/click to play", canvas.width/2, canvas.height/2);
+        
+        window.addEventListener('keydown', (event) => {
+            run();
+        });
+
+        function run() {
+            if (!game) {
+                game = true;
+                requestAnimationFrame(main);
+            }
+        }
     </script>
+
+    <div style="clear: both; padding-top: 20px;">
+        Are you a budding website developer?! Then, you gotta put this li'l bro on your page - he reminds your users about <i>1984</i>!
+        <br><br>
+
+        <div style="float: left;">
+            <div style="display: flex; flex-direction: column; width: 158px; text-align: center;">
+                <div style="width: 145px; height: 161px; overflow: hidden; position: relative; border-radius: 14px; left: 6.5px;">
+                    <img style="position: absolute;" id="alex-oliver" src="reference.gif">
+                </div>
+            <div style="font-size: 7px; color: white">Alex Oliver, 2026</div><div><span style="font-style: italic;">"Big brother is watching<br>you"</span>
+            <span> - George Orwell</span></div></div>
+            <script>var i=0;var j=0;function m(t){if(j%9==0){document.getElementById("alex-oliver").style.left=`${-i*145}px`;if(i>6){i=0}else{i ++}} j ++;requestAnimationFrame(m)} requestAnimationFrame(m)</script>
+        </div>
+
+        <textarea style="margin-left: 7px; height: 198px; width: 470px; float: left; margin-right: 7px;" id="code">
+<div>
+    <div style="display: flex; flex-direction: column; width: 158px; text-align: center;">
+        <div style="width: 145px; height: 161px; overflow: hidden; position: relative; border-radius: 14px; left: 6.5px;">
+            <img style="position: absolute;" id="alex-oliver" src="reference.gif">
+        </div>
+    <div style="font-size: 7px; color: white">Alex Oliver, 2026</div><div><span style="font-style: italic;">"Big brother is watching<br>you"</span>
+    <span> - George Orwell</span></div></div>
+    <script>var i=0;var j=0;function m(t){if(j%9==0){document.getElementById("alex-oliver").style.left=`${-i*145}px`;if(i>6){i=0}else{i ++}} j ++;requestAnimationFrame(m)} requestAnimationFrame(m)</script>
+</div>
+        </textarea>
+
+        <button onclick="copy()">Copy to clipboard</button>
+        <script>
+            function copy() {
+                var copyText = document.getElementById("code");
+
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(copyText.value);
+            }
+        </script>
+
+        <br><br>
+
+        <!-- <a href="mailto:dev.alexoliver@googlemail.com" style="text-decoration: none; color: red;">Alex Oliver</a>, 2026 -->
+    </div>
 </body>
