@@ -123,10 +123,12 @@
     		if (e.key === "ArrowLeft") {
         		e.preventDefault();
         		left = true;
+                run();
     		}
     		if (e.key === "ArrowRight") {
         		e.preventDefault();
         		right = true;
+                run();
     		}
 		}
 
@@ -149,11 +151,7 @@
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = "red";
-        ctx.fillText("Press key/click to play", canvas.width/2, canvas.height/2);
-        
-        window.addEventListener('keydown', (event) => {
-            run();
-        });
+        ctx.fillText("Press l/r arrow or click to play", canvas.width/2, canvas.height/2);
 
         function run() {
             if (!game) {
@@ -189,7 +187,9 @@
 </div>
         </textarea>
 
-        <button onclick="copy()">Copy to clipboard</button>
+        <button onclick="copy()">Copy to clipboard</button><br><br>
+        <a href="reference.gif" download="reference" style="text-decoration: none; color: red;">Link to download man</a>
+
         <script>
             function copy() {
                 var copyText = document.getElementById("code");
