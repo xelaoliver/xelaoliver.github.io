@@ -14,7 +14,7 @@
     <canvas id="canvas" width="640" height="480" style="border: 1px solid black; border-radius: 14px; float: left;" onclick="run()"></canvas>
     
     <div style="float: right; width: calc(100% - 647px);">
-        Snake with <i>realistic</i> bodily movements, controlled with your <b>mouse's scroll wheel</b> or <b>left and right arrow keys</b> (relative to worm's direction). The more balls you eat, the longer you grow!
+        Snake with <i>realistic</i> bodily movements, controlled with your <b>left and right arrow keys</b> (relative to worm's direction). The more balls you eat, the longer you grow!
         
         <p><b>Reload</b> this page upon your inevitable death!</p>
         
@@ -113,11 +113,13 @@
             }
         }
 
+        /*
         function rotate(event) {
             let a = event.deltaY*-rotateAmount;
             a = Math.max(-.075, Math.min(.075, a));
             pDir += a;
         }
+        */
 		
 		function handleKeyDown(e) {
     		if (e.key === "ArrowLeft") {
@@ -145,13 +147,16 @@
 
 		document.addEventListener("keydown", handleKeyDown);
  		document.addEventListener("keyup", handleKeyUp);
-        document.querySelector("body").onwheel = rotate;
+        // document.querySelector("body").onwheel = rotate;
 
         ctx.font = "50px Times New Roman";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = "red";
-        ctx.fillText("Press l/r arrow or click to play", canvas.width/2, canvas.height/2);
+        ctx.fillText("Click or press the left or right", canvas.width/2, canvas.height/2-25);
+        ctx.fillText("arrow keys to play!", canvas.width/2, canvas.height/2+25);
+
+        ctx.fillText("𓆙", canvas.width/2, canvas.height-50);
 
         function run() {
             if (!game) {
@@ -160,6 +165,8 @@
             }
         }
     </script>
+
+    <div style="clear: both; padding-top: 20px; text-align: left;"><hr></div>
 
     <div style="clear: both; padding-top: 20px;">
         Are you a budding website developer?! Then, you gotta put this li'l bro on your page - he reminds your users about <i>1984</i>!
@@ -201,7 +208,31 @@
         </script>
 
         <br><br>
-
-        <!-- <a href="mailto:dev.alexoliver@googlemail.com" style="text-decoration: none; color: red;">Alex Oliver</a>, 2026 -->
     </div>
+
+    <div style="clear: both; padding-top: 20px; text-align: left;"><hr></div>
+
+    <p style="text-align: center;"><a href="mailto:dev.alexoliver@googlemail.com" style="text-decoration: none; color: red;">Alex Oliver</a>, <span id="decade"></span></p>
+    <script>
+        var a = document.getElementById("decade");
+        var f = 10; var j = 0;
+
+        function b(time) {
+            a.innerHTML = `${f}${new Date().getFullYear()-2000}`;
+
+            if (j%5 == 0) {
+                if (f > 98) {
+                    f = 10;
+                } else {
+                    f ++;
+                }
+            }
+
+            j ++;
+
+            requestAnimationFrame(b);
+        }
+        
+        requestAnimationFrame(b);
+    </script>
 </body>
