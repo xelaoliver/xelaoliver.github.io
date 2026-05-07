@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>typewritist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid black;
+            border-radius: 7px;
+            padding: 7px;
+            width: 640px;
+            height: 480px;
+        }
+
+        .line {
+            display: flex;
+        }
+
+        .box {
+            height: 23.33px;
+            width: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 161px;
+        }
+    </style>
+</head>
+
+<body style="width: 80%; margin-left: auto; margin-right: auto;">
+    <h1 style="text-align: center; color: red;">TYPIST-WRITER</h1>
+    <div id="container" style="float: left; margin-right: 7px;"></div>
+
+    <script>
+        const container = document.getElementById("container");
+
+        let currentLine = createLine();
+        var noChars = 0; var shift = false;
+
+        function createLine() {
+            const line = document.createElement("div");
+            line.className = "line";
+            container.appendChild(line);
+            return line;
+        }
+
+        function character(i) {
+            const box = document.createElement("div");
+            box.className = "box";
+            box.id = `${noChars}`;
+
+            const char = document.createElement("img");
+            char.src = "correct-typeface.png";
+
+            const c = i%26;
+
+            char.style.left = `${-c*23.33}px`;
+            char.style.top = `${-(Math.floor(i/26)*1.91)*23.33}px`;
+
+            box.appendChild(char);
+            currentLine.appendChild(box);
+
+            noChars ++;
+        }
+
+        document.addEventListener("keydown", function (e) {
+            e.preventDefault();
+            console.log(e.keyCode);
+
+            if (e.keyCode == 13) {
+                // enter
+                currentLine = createLine();
+                return;
+            } else if (e.keyCode == 32) {
+                // space
+                character(77);
+            } else if (e.keyCode == 8) {
+                // backspace
+                noChars--;
+
+                const a = document.getElementById(`${noChars}`);
+
+                if (a) {
+                    a.remove();
+                }
+            }
+
+            if (e.keyCode > 64 && e.keyCode < 91) {
+                // regular characters (alphabet)
+                if (shift) {
+                    character(e.keyCode-65);
+                } else {
+                    character((e.keyCode-65)+26);
+                }
+            } else if (e.keyCode >= 48 && e.keyCode <= 57) {
+                // numbers, it works ok
+                if (e.keyCode == 48) {
+                    character(61);
+                } else {
+                    character(e.key.charCodeAt(0)-48+(26*2)-1);
+                }
+            } else if (e.keyCode >= 188 && e.keyCode <= 191) {
+                // , . / - this also works ok
+                let a = e.keyCode;
+                if (a == 190) {
+                    a = 189
+                } else if (a == 191) {
+                    a = 206;
+                }
+                character((a-188)+62);
+            }
+
+            if (noChars%Math.floor(940/23.33) == 0 && noChars != 0) {
+                currentLine = createLine();
+            }
+        });
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Shift') {
+                shift = true;
+                console.log("shift pressed");
+            }
+        });
+
+        window.addEventListener('keyup', (event) => {
+            if (event.key === 'Shift') {
+                shift = false;
+                console.log("shift released")
+            }
+        });
+    </script>
+
+    <div>
+        I took a scan of the entire alphabet, upper and lower case as well as some other characters (<i>numbers and , . /</i>), wrote a program to display them by their index, and viola! A computer typewriter.
+
+        <p>
+            To use this, <b>just start typing</b>.
+        </p>
+        <p>
+            There is no cursor - typewriters didn't have them. But there is a backspace, as I didn't want to program white-out into this website. As I said before, you can <b>only type upper and lower case characters, numbers and ', . /'</b> - but feel free to add this in your own version! If you have a typewriter, (mine is a 1960s Adler Tippa Typewriter, all yellowed and old) type out the alphabet, scan it and upload it to your own website!
+        </p>
+    </div>
+
+    <p style="text-align: center; clear: both; padding-top: 20px;"><a href="mailto:dev.alexoliver@googlemail.com" style="text-decoration: none; color: red;">Alex Oliver</a>, 2026</p>
+</body>
+</html>
