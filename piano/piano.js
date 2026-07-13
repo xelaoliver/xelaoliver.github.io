@@ -497,26 +497,39 @@ function drawKeyboard() {
     drawFingers();
 }
 
-// parse midi file
-const response = await fetch("entry-of-the-gladiators.mid");
-const buffer = await response.arrayBuffer();
+// parse midi
+let notes = [];
+async function loadMidi() {
+    const file = document.getElementById("midiInput").files[0];
 
-const midi = new Midi(buffer);
+    if (!file) {
+        alert("Please select a MIDI file.");
+        return;
+    }
 
-console.log("duration of midi file:", midi.duration);
+    const buffer = await file.arrayBuffer();
+    const midi = new Midi(buffer);
 
-var notes = [];
+    console.log("Duration:", midi.duration);
 
-midi.tracks.forEach(track => {
-    track.notes.forEach(note => {
-        // [start of note, press/release (1/0), key, velocity]
-        notes.push([note.time, 1, note.midi, note.velocity]);
-        notes.push([note.time+note.duration, 0, note.midi]);
+    notes = [];
+
+    midi.tracks.forEach(track => {
+        track.notes.forEach(note => {
+            notes.push([note.time, 1, note.midi, note.velocity]);
+            notes.push([note.time + note.duration, 0, note.midi]);
+        });
     });
-});
 
-// sort notes
-notes.sort((a, b) => a[0] - b[0]);
+    notes.sort((a, b) => a[0] - b[0]);
+
+    // Reset playback state
+    fingers.length = 0;
+    noteI = 0;
+    playStart = null;
+
+    tryStart();
+}
 
 // playing midi file
 let playStart = null;
@@ -559,12 +572,12 @@ function tryStart() {
 }
 
 let audioReady = false;
-document.addEventListener("click", async () => {
-    await Tone.start();
+document.getElementById("loadMidi").addEventListener("click", async () => {
+    await Tone.start();   // Safe to call multiple times
     audioReady = true;
-    console.log("audio ready");
-    tryStart();
-}, { once: true });
+
+    await loadMidi();
+});
 
 onload: () => {
     console.log("piano loaded");
