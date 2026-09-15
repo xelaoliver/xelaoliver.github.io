@@ -1,0 +1,71 @@
+<!DOCTYPE html><html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/src/style.css">
+    <title>Player Piano - Alex Oliver</title>
+    <script src="/src/japanese.js" defer></script>
+</head>
+<body>
+    <div class="main">
+        <!-- Project meta -->
+        <h1>Player Piano</h1>
+        July 2026<p />
+
+        <!-- Project information -->
+        Load up your favourite piano songs, it's not exactly a Steinway, but it's MIDI! <p />
+        
+        I've always had a liking to the HTML canvas. It can't do 3D, texture manipulation or anything an <i>ordinary person</i> would classify as standard. I believe that creativity thrives on constraints. One might figure that may be a metaphor for <a href="https://en.wikipedia.org/wiki/Player_piano" target="_blank">Player Pianos</a> themselves. They are marvelous mechanical machines composed of pneumatic or electromechanical mechanisms that plays from perforated rolls. Of course, these machines are no longer produced and are very expensive to both maintain and purchase so I thought one night to program a comprimise...<p />
+
+        <!-- Project demo -->
+
+        <div class="center">
+            <canvas id="canvas" width="900" height="300" style="border: 1px solid black;"></canvas><br>
+
+            <input type="file" id="midiInput" accept=".mid, .midi" style="width: 180px;">
+            <select id="midiSelect">
+                <option value="midi/entry-of-the-gladiators.mid">Entrance of the Gladiators - Julius Fucik</option>
+                <option value="midi/maple-leaf-rag.mid">Maple Leaf Rag - Scott Joplin</option>
+                <option value="midi/entertainer.mid">The Entertainer - Scott Joplin</option>
+                <option value="midi/nyan-cat.mid">Nyan Cat - Tom Brier</option>
+                <option value="midi/waldstein.mid">Piano Sonata No. 21 "Waldstein" - Beethoven</option>
+                <option value="midi/sandman.mid">Mister Sandman - The Chordettes</option>
+            </select>
+            <button id="loadMidi">Play!</button>
+        </div>
+        <br>
+
+        Duration: <span id="duration"></span><br>
+        No. notes: <span id="notes"></span><p />
+
+        <h3>MIDI</h3>
+
+        I'm no musician (but I do like some good ol' piano), but MIDI is a digital recording format that stores musical instructions (note, duration, pitch... all of that jargon). It's almost... a piano roll.<p />
+
+        <div class="center"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/PlayerPianoRoll.jpg/1280px-PlayerPianoRoll.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail"><br>Source: <a href="https://commons.wikimedia.org/wiki/File:PlayerPianoRoll.jpg" target="_blank">Wikipedia</a></div><p />
+
+        You see, the humble piano roll stores information about each key: when to play a note and for how long. As an analogy (too keep this short), MIDI is just like this.<p />
+
+        One could very easily programmatically itterate through a MIDI file, read all information about notes and then append them to an array for playback later. I'm barely scratching the surface of MIDI, but this is all I used for this project.
+
+        <h3>The HTML Canvas API</h3>
+
+        Probably my favourite HTML element of all is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank">Canvas API</a>. It's an incredibly versatile and powerful tool for incorporating 2D graphics into a webpage. Almost all of my HTML/JS projects utilise it in some way, shape, or form - and for good reason.
+
+        With the Canvas API, you can effortlessly draw lines, polygons (and even build 3D graphics from them), images, text, and so much more. The possibilities are practically endless.<p />
+
+        And who said <i>HTML can't be a game engine</i>? Heres a very customisable demo of an engine that I wrote in Javascript using the HTML Canvas (using a whole bunch of <a href="https://xelaoliver.github.io/algorithms">trigonometry</a>):<p />
+
+        <div class="center"><canvas id="piston" width="160" height="300" style="border: 1px solid black;"></canvas></div>
+        <script src="/src/piston.js"></script>
+
+        <footer class="center" style="padding-top: 50px; padding-bottom: 7px;">Alex Oliver, 2026</footer>
+    </div>
+
+    <!-- load finger -->
+    <div style="display: none;">
+        <img id="finger" src="finger.png">
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

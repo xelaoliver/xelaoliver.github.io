@@ -1,0 +1,31 @@
+.main {
+    font-family: Helvetica, sans-serif;
+    width: 80%;
+    margin: auto;
+}
+
+.center {
+    text-align: center;
+    width: 100%;
+}
+
+pre {
+    background-color: #ebedee;
+    padding: 7px;
+}
+
+img {
+    width: 800px;
+    max-width: 90%;
+}
+
+canvas {
+    max-width: 90%;
+}
+    
+@media only screen and (max-width: 600px) {
+    .main {
+        font-size: medium;
+        width: 90%;
+    }
+}
