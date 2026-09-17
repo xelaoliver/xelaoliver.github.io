@@ -3,22 +3,20 @@
 // just include <script src="sources.js" defer></script>
 
 // japanese translation
-const googleTranslate = document.createElement("div");
+const translateButton = document.createElement("button");
+translateButton.id = "translateButton";
+translateButton.innerText = "Translate / \u7ffb \u8a33";
+translateButton.className = "notranslate";
+translateButton.style.position = "absolute";
+translateButton.style.right = "7px";
+translateButton.style.top = "7px"
+translateButton.style.zIndex = "999";
 
+document.body.append(translateButton);
+
+const googleTranslate = document.createElement("div");
 googleTranslate.id = "google_translate_element";
 googleTranslate.style.display = "none";
-googleTranslate.style.position = "absolute";
-googleTranslate.style.width = "0";
-googleTranslate.style.height = "0";
-googleTranslate.style.overflow = "hidden";
-
-document.body.append(googleTranslate);
-
-const googleTranslate = document.createElement("div");
-
-googleTranslate.id = "google_translate_element";
-googleTranslate.style.display = "none";
-
 document.body.append(googleTranslate);
 
 const script = document.createElement("script");
