@@ -1,4 +1,4 @@
-const whitelist = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890,.=+-?%;:*\"/@£_&'() ";
+const whitelist = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890,.=+-?%;:*\"/@£_&'() \\";
 const character = {
     "width": 23.33, "height": 32, "x-spacing": 13.2, "y-spacing": 35,
     "layout": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890,.=+-?%;:       *\"/@£_&'()"
@@ -25,8 +25,9 @@ function typeText() {
     var width = 0;
     var height = b.length*character.height;
     for (let i = 0; i < b.length; i ++) {
-        if (width < b[i].length) {
-            width = b[i].length;
+        const length = b[i].length-((b[i].split('\\').length-1)*2);
+        if (width < length) {
+            width = length;
         }
     }
     width *= character.width;
@@ -39,10 +40,15 @@ function typeText() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // type text
+    var x = 0;
     for (let y = 0; y < b.length; y ++) {
         const line = b[y];
-        for (let x = 0; x < line.length; x ++) {
-            const i = character.layout.indexOf(line[x]);
+        for (let iX = 0; iX < line.length; iX ++) {
+            if (line[iX] == "\\") {
+                continue;
+            }
+
+            const i = character.layout.indexOf(line[iX]);
             const a = i%26;
             const c = Math.floor(i/26);
 
@@ -57,6 +63,10 @@ function typeText() {
                 character.width,
                 character.height
             );
+
+            if (line[iX+1] != "\\") {
+                x ++;
+            }
         }
     }
 }
