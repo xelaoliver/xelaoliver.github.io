@@ -1,0 +1,89 @@
+<!DOCTYPE html><html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/src/favicon/site.webmanifest">
+    <link rel="stylesheet" type="text/css" href="/src/style.css">
+    <title>Algorithms - Alex Oliver</title>
+    <script src="/src/japanese.js" defer></script>
+</head>
+<body>
+    <div class="main">
+        <!-- Project meta -->
+        <h1>Algorithms</h1>
+
+        <!-- Project information -->
+        Some delicious algorithms and snippets of code that Alex finds useful.<p />
+
+        <h3>Trigonometry</h3>
+
+        All you need is a basic highschool level understanding of trigonometry (SOH CAH TOA) to program fun things with circles, polar coordinates and directional movements.
+
+        <pre translate="no">
+// returns an [x, y] coordinate from a point described by an angle and radius
+
+function pointOnCircle(radius, radian) {
+    return [Math.cos(radian)*radius, -Math.sin(radian)*radius];
+}</pre>
+
+        This function is a useful <i>polar to cartesian</i> algorithm, where you can specify a radius of a circle and a radian (distance from the center of a circle and direction in layman's terms). I've used this in many of my programs: clocks, dials, 2D directional movement, etc... Here is a simple demo of the algorithm at work:<p />
+
+        <div class="center">
+            <canvas width="200" height="200" id="trig" style="border: 1px solid black;"></canvas>
+            <div id="info"></div>
+        </div>
+        <script>
+            const info = document.getElementById("info");
+            const canvas = document.getElementById("trig");
+            const ctx = canvas.getContext("2d");
+            const radius = canvas.width/2;
+
+            ctx.strokeStyle = "#ebedee";
+            ctx.lineWidth = 4;
+
+            function pointOnCircle(radius, radian) {
+                return [Math.cos(radian)*radius, -Math.sin(radian)*radius];
+            }
+
+            function draw(timestamp) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // draw outline circle
+                ctx.beginPath();
+                ctx.arc(radius, radius, radius-10, 0, Math.PI*2);
+                ctx.stroke();
+
+                const radian = (timestamp/4000)%(Math.PI*2);
+
+                // draw line
+                ctx.beginPath();
+                ctx.moveTo(radius, radius);
+                const a = pointOnCircle(radius-10, radian);
+                a[0] += radius;
+                a[1] += radius;
+
+                ctx.lineTo(a[0], a[1]);
+                ctx.stroke();
+
+                // draw dot
+                ctx.beginPath();
+                ctx.arc(a[0], a[1], 2.5, 0, Math.PI*2);
+                ctx.fill();
+
+                info.innerHTML = `θ: ${Math.floor(radian*(180/Math.PI))%360}<br>x: ${Math.floor(a[0])} y: ${Math.floor(a[1])}`;
+
+                requestAnimationFrame(draw);
+            }
+
+            requestAnimationFrame(draw);
+        </script>
+
+        <!-- Project demo -->
+
+        <div class="footer"><div class="center">Alex Oliver, 2026</div></div>
+    </div>
+</body>
+</html>
