@@ -109,15 +109,15 @@ Braille character: ⠗
 *where 1 corresponds to dot, 0 no dot
         </pre>
 
-        This can prevail some glorious ASCII art and fun ways to display data/mathmatical functions graphically.
+        This can prevail some glorious ASCII art and fun ways to display data/mathmatical functions graphically. Here is <a href="https://en.wikipedia.org/wiki/Andy_Hertzfeld" target="_blank">Andy Hertzfeld</a> displayed using very small braille characters: <p />
 
-        <pre id="out"></pre>
+        <code id="out" style="font-size: 8px; line-height: 1; display: block;"></code>
+        <script src="andy.js"></script>
         <script>
             const output = document.getElementById("out");
-            var screen = [];
 
-            const width = 80;
-            const height = 42;
+            const width = 162;
+            const height = 162;
             for (let i = 0; i < height; i++) { 
                 screen.push(new Array(width).fill(0)); 
             }
@@ -132,6 +132,8 @@ Braille character: ⠗
                 return String.fromCodePoint(0x2800+value);
             }
 
+            const message = "Andy Hertzfeld - Alex Oliver, 2026";
+
             function displayScreen(screen) {
                 output.innerHTML = "";
                 for (let y = 0; y < height; y += 3) {
@@ -145,20 +147,11 @@ Braille character: ⠗
                         output.innerHTML += braille(bits);
                     }
 
-                    output.innerHTML += "\n";
+                    output.innerHTML += "<br>";
                 }
             }
 
-            var x = 0;
-
-            function demo() {
-                screen[Math.floor(height/2)+Math.floor(Math.sin(x*.2)*20)][x] = 1;
-                displayScreen(screen);
-
-                x ++;
-            }
-
-            setInterval(demo, 300);
+            displayScreen(screen);
         </script>
 
         <div class="footer"><div class="center">Alex Oliver, 2026</div></div>
