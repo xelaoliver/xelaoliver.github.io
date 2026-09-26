@@ -17,15 +17,14 @@ const character = {
     "layout": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890,.=+-?%;:       *\"/@£_&'()"
 }
 
+var taken = [[], []];
+
 function typeText(text) {
     const ctx = canvas.getContext("2d");
 
     // Set canvas dimensions.
     canvas.width = text.length*character.width;
     canvas.height = character.height;
-
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw each character.
     for (let x = 0; x < text.length; x++) {
@@ -53,13 +52,37 @@ function typeText(text) {
     }
 }
 
-for (let i = 0; i < projects.length; i ++) {
+for (let i = 0; i < projects.length; i++) {
     let project = document.createElement("canvas");
     project.id = i;
     project.style.cssText = "position: absolute;";
 
-    const x = Math.floor(Math.random()*(container.clientWidth-(projects[i][0].length*character.width))/character.width)*character.width;
-    const y = Math.floor(Math.random()*(container.clientHeight-character.height)/character.height)*character.height;
+    const width = projects[i][0].length * character.width;
+    let x, y, overlaps;
+
+    // thanks to stackoverflow for the do {} while {}
+    do {
+        x = Math.floor(Math.random()*(container.clientWidth-width)/character.width)*character.width;
+        y = Math.floor(Math.random()*(container.clientHeight-character.height)/character.height)*character.height;
+
+        overlaps = 0;
+        for (let j = 0; j < taken[0].length; j++) {
+            const otherX = taken[0][j];
+            const otherY = taken[1][j];
+            const otherWidth = projects[j][0].length * character.width;
+
+            // Check whether the two rectangles overlap.
+            if (
+                x < otherX + otherWidth &&
+                x+width > otherX &&
+                y < otherY+character.height &&
+                y+character.height > otherY
+            ) {
+                overlaps = 1;
+                break;
+            }
+        }
+    } while (overlaps);
 
     project.style.transform = `translate(${x}px, ${y}px)`;
 
@@ -70,7 +93,8 @@ for (let i = 0; i < projects.length; i ++) {
     link.appendChild(project);
 
     var canvas = document.getElementById(i);
-    var ctx = canvas.getContext("2d");
-
     typeText(projects[i][0]);
+
+    taken[0].push(x);
+    taken[1].push(y);
 }
