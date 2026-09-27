@@ -155,6 +155,92 @@ Braille character: ⠗
             displayScreen(screen);
         </script>
 
+        <h3>Projection equation</h3>
+
+        Probably one of my favourite equations when I was first learning programming. Take an X, Y, Z coordinate and convert it into 2 dimensional screenspace to be displayed on the screen. It's very simple, but the capabilities of it are limitless. I found Tsoding does an excellent demonstration of the formula in his video about the <a href="https://www.youtube.com/watch?v=qjWkNZ0SXfo" target="_blank">One Formula That Demystifies 3D Graphics</a> on YouTube. The formula:
+
+<pre translate="no">
+x' = (x+1)/z*width
+y' = (1-(y+1)/z)*height
+</pre>
+
+        Here's a quick <a href="https://en.wikipedia.org/wiki/Point_cloud" target="_blank">Point Cloud</a> demo:<p />
+        
+        <div class="center"><canvas id="3dcanvas" style="border: 1px solid black; width: 400px; height: 400px;"></canvas></div><p />
+        
+        The <a href="https://en.wikipedia.org/wiki/Utah_teapot" target="_blank">Utah Teapot</a>, converted into a .ASC file by <a href="https://github.com/cloudcompare/cloudcompare" target="_blank">Cloud Compare</a> and then projected and rendered to the HTML canvas using JavaScript. I think I spent more time optimising this to run faster than actually programming it! Good fun.
+        
+        <script>
+            const aCanvas = document.getElementById("3dcanvas");
+            const aCtx = aCanvas.getContext("2d");
+            const pointSize = .3;
+            var points;
+
+            const aWidth = aCanvas.width;
+            const aHeight = aCanvas.height;
+            const halfWidth = aWidth/2;
+            const halfHeight = aHeight/2;
+            
+            // read ASC file into array
+            async function read() {
+                const response = await fetch("utah-teapot.asc");
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const textData = await response.text();
+                const lines = textData.trim().split(/\r?\n/);
+
+                points = new Float32Array(lines.length*3);
+
+                for (let i = 0; i < lines.length; i ++) {
+                    const values = lines[i].trim().split(/\s+/);
+
+                    points[i*3] = Number(values[0]);
+                    points[i*3+1] = Number(values[1]);
+                    points[i*3+2] = Number(values[2]);
+                }
+
+                requestAnimationFrame(projectAndDraw);
+            }
+
+            // project and draw all points onto canvas
+            function projectAndDraw(timestamp) {
+                aCtx.clearRect(0, 0, aWidth, aHeight);
+
+                const a = timestamp*.001;
+                const cosA = Math.cos(a);
+                const sinA = Math.sin(a);
+
+
+                for (let i = 0; i < points.length; i += 3) {
+                    const vx = points[i];
+                    const vy = points[i+1]-1.5;
+                    const vz = points[i+2];
+
+                    const x = vx*cosA-vz*sinA;
+                    const z1 = vx*sinA+vz*cosA;
+
+                    const y = vy*cosA-z1*sinA;
+                    const z = vy*sinA+z1*cosA+8;
+
+                    if (z <= 0) continue;
+
+                    aCtx.fillRect(
+                        x/z*aWidth+halfWidth,
+                        -y/z*aHeight+halfHeight,
+                        pointSize,
+                        pointSize
+                    );
+                }
+
+                requestAnimationFrame(projectAndDraw);
+            }
+
+            read();
+        </script>
+
         <div class="footer"><div class="center">Alex Oliver, 2026</div></div>
     </div>
 </body>
