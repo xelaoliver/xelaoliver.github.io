@@ -44,3 +44,14 @@ document.getElementById("translateButton").addEventListener("click", () => {
         select.dispatchEvent(new Event("change"));
     }
 });
+
+// typewriter
+const title = document.getElementById("projectName");
+const typewriterCanvas = document.createElement("canvas");
+const link = document.createElement("a");
+link.href = window.location.href;
+
+title.replaceWith(link);
+link.appendChild(typewriterCanvas);
+
+typeText(typewriterCanvas, title.textContent);

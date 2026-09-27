@@ -38,6 +38,10 @@ html, body {
     left: 0;
     width: 100%;
 }
+
+#projectName {
+    height: 32px;
+}
     
 @media only screen and (max-width: 600px) {
     .main {
