@@ -3,7 +3,9 @@ const projects = [
     ["Player Piano", "https://xelaoliver.github.io/piano/"],
     ["Driving Simulator", "https://xelaoliver.github.io/drive/"],
     ["Rolodex of Algorithms", "https://xelaoliver.github.io/algorithms/"],
-    ["Clock Demonstrations & Programs", "https://github.com/xelaoliver/demos"]
+    ["Clock Demonstrations & Programs", "https://github.com/xelaoliver/demos"],
+    ["Quizlet Match Solver", "https://github.com/xelaoliver/quizlet-match-solver"],
+    ["Master Clock", "https://xelaoliver.github.io/old-website/clock"]
 ]
 
 var taken = [[], []];
