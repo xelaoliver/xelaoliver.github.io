@@ -1,0 +1,32 @@
+<!DOCTYPE html><html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/src/favicon/site.webmanifest">
+    <link rel="stylesheet" type="text/css" href="/src/style.css">
+    <title>Worm - Alex Oliver</title>
+    <script src="/src/japanese.js" defer></script>
+</head>
+<body>
+    <div class="main">
+        <!-- Project meta -->
+        <div id="projectName">Worm</div><p />
+        <script src="/src/typewriter.js"></script>
+        <p />
+
+        Use the <b>left & right arrow keys</b> to tempt the worm to move in a desired direction (and to <b>start the game</b>), towards a ball. The worm immediately perishes if you hit the edge of the CRT or it's own body. The image of the vectrex is from <a href="https://auctionet.com/en/4857211-vectrex-game-console-with-2-games-1980s" target="_blank">Auctionet</a> (it sold for £299!), but all programming and design is by me.
+
+        <div style="position: relative; width: 800px; max-width: 90%; margin: 0 auto;">
+            <img src="vectrex.gif" style="position: absolute; top: 0; left: 0; z-index: 2;" id="image">
+            <canvas id="canvas" style="position: absolute; top: 0; left: 0;"></canvas>
+        </div>
+
+        <script src="script.js"></script>
+
+        <div class="footer"><div class="center">Alex Oliver, 2026</div></div>
+    </div>
+</body>
+</html>

@@ -5,7 +5,8 @@ const projects = [
     ["Rolodex of Algorithms", "https://xelaoliver.github.io/algorithms/"],
     ["Clock Demonstrations & Programs", "https://github.com/xelaoliver/demos"],
     ["Quizlet Match Solver", "https://github.com/xelaoliver/quizlet-match-solver"],
-    ["Master Clock", "https://xelaoliver.github.io/old-website/clock"]
+    ["Master Clock", "https://xelaoliver.github.io/old-website/clock"],
+    ["Vectrex Worm", "https://xelaoliver.github.io/worm"]
 ]
 
 var taken = [[], []];
