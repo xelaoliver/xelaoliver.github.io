@@ -6,6 +6,7 @@ const projects = [
     ["Clock Demonstrations & Programs", "https://github.com/xelaoliver/demos"],
     ["Quizlet Match Solver", "https://github.com/xelaoliver/quizlet-match-solver"],
     ["Master Clock", "https://xelaoliver.github.io/master-clock"],
+    ["Planetary Clock", "https://xelaoliver.github.io/planetary-clock"],
     ["Vectrex Worm", "https://xelaoliver.github.io/worm"]
 ]
 
