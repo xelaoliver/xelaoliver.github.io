@@ -42,6 +42,11 @@ html, body {
 #projectName {
     height: 32px;
 }
+
+@view-transition {
+    navigation: auto;
+}
+
     
 @media only screen and (max-width: 600px) {
     .main {
